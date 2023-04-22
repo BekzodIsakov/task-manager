@@ -2,7 +2,13 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        gradient: "url('/src/assets/gradient.jpg')",
+        horizon: "url('/src/assets/horizon.jpg')",
+        paint: "url('/src/assets/paint.jpg')",
+      },
+    },
   },
   plugins: [],
 };
