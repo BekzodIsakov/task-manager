@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Column } from "./components/Column";
+import Header from "./components/Header";
 
 const INITIAL_LIST = [
   {
@@ -39,13 +40,12 @@ const App = () => {
 
   return (
     <div className='min-h-screen bg-cover'>
-      <Column list={list} onDragEnd={handleDragEnd} dragItemClasses='shadow-xl'>
-        {(item) => (
-          <>
-            {item.firstName} {item.lastName}
-          </>
-        )}
-      </Column>
+      <Header></Header>
+      <Column
+        list={list}
+        onDragEnd={handleDragEnd}
+        dragItemClasses='shadow-xl'
+      />
     </div>
   );
 };

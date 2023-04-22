@@ -1,15 +1,14 @@
 import { Draggable } from "react-beautiful-dnd";
 import clsx from "clsx";
+import GripIcon from "./icons/GripIcon";
 
 const DraggableItem = ({ item, index, dragItemClasses, children }) => {
-  console.log({ children });
   return (
     <Draggable key={item.id} index={index} draggableId={item.id}>
       {(provided, snapshot) => (
         <div
           ref={provided.innerRef}
           {...provided.draggableProps}
-          {...provided.dragHandleProps}
           className={clsx("border-2 p-6", {
             [dragItemClasses]: snapshot.isDragging,
           })}
@@ -18,7 +17,10 @@ const DraggableItem = ({ item, index, dragItemClasses, children }) => {
             ...provided.draggableProps.style,
           }}
         >
-          {children(item)}
+          {item.firstName} {item.lastName}
+          <div className='inline-block px-0.5 py-1 border-2' {...provided.dragHandleProps}>
+            <GripIcon className={"w-4 h-4"} />
+          </div>
         </div>
       )}
     </Draggable>
