@@ -19,7 +19,7 @@ export const StrictModeDroppable = ({ children, ...props }) => {
   return <Droppable {...props}>{children}</Droppable>;
 };
 
-export const Column = ({ list, onDragEnd, dragItemClasses }) => {
+export const Column = ({ list, onDragEnd, dragItemClasses, ...otherProps }) => {
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <StrictModeDroppable droppableId='droppable'>
@@ -32,25 +32,8 @@ export const Column = ({ list, onDragEnd, dragItemClasses }) => {
                 draggableId={item.id}
                 dragItemClasses={dragItemClasses}
                 item={item}
+                {...otherProps}
               />
-              // <Draggable key={item.id} index={index} draggableId={item.id}>
-              //   {(provided, snapshot) => (
-              //     <div
-              //       ref={provided.innerRef}
-              //       {...provided.draggableProps}
-              //       {...provided.dragHandleProps}
-              //       className={clsx("border-2 p-6", {
-              //         [dragItemClasses]: snapshot.isDragging,
-              //       })}
-              //       style={{
-              //         // default drag style
-              //         ...provided.draggableProps.style,
-              //       }}
-              //     >
-              //       {item.firstName} {item.lastName}
-              //     </div>
-              //   )}
-              // </Draggable>
             ))}
             {provided.placeholder}
           </div>

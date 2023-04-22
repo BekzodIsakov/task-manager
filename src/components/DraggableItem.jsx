@@ -1,7 +1,8 @@
 import { Draggable } from "react-beautiful-dnd";
 import clsx from "clsx";
 
-const DraggableItem = ({ item, index, dragItemClasses }) => {
+const DraggableItem = ({ item, index, dragItemClasses, children }) => {
+  console.log({ children });
   return (
     <Draggable key={item.id} index={index} draggableId={item.id}>
       {(provided, snapshot) => (
@@ -17,7 +18,7 @@ const DraggableItem = ({ item, index, dragItemClasses }) => {
             ...provided.draggableProps.style,
           }}
         >
-          {item.firstName} {item.lastName}
+          {children(item)}
         </div>
       )}
     </Draggable>

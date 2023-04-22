@@ -39,12 +39,13 @@ const App = () => {
 
   return (
     <div className='min-h-screen bg-cover'>
-      <Column
-        list={list}
-        onDragEnd={handleDragEnd}
-        dragItemClasses='shadow-xl'
-      />
-      
+      <Column list={list} onDragEnd={handleDragEnd} dragItemClasses='shadow-xl'>
+        {(item) => (
+          <>
+            {item.firstName} {item.lastName}
+          </>
+        )}
+      </Column>
     </div>
   );
 };
