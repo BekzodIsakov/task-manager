@@ -4,6 +4,7 @@ import clsx from "clsx";
 
 import { ASSIGNEES, PRIORITIES, PRIORITY_COLORS } from "../App";
 import GripIcon from "./icons/GripIcon";
+import AssigneesList from "./AssigneesList";
 
 const DraggableItem = ({ item, index, dragItemClasses, children }) => {
   const assignees = item?.assigneesIds.map((id) => ASSIGNEES.get(id));
@@ -23,6 +24,12 @@ const DraggableItem = ({ item, index, dragItemClasses, children }) => {
           }}
         >
           <div
+            className='inline-block px-0.5 py-1 border-2'
+            {...provided.dragHandleProps}
+          >
+            <GripIcon className={"w-4 h-4"} />
+          </div>
+          <div
             className={`w-6 h-2 rounded-md`}
             style={{
               backgroundColor: PRIORITY_COLORS[PRIORITIES[item.priorityIdx]],
@@ -30,24 +37,7 @@ const DraggableItem = ({ item, index, dragItemClasses, children }) => {
           ></div>
           <h3>{item.task}</h3>
           <p>{item.description}</p>
-          <div>
-            {assignees &&
-              assignees.map((a) => (
-                <div key={a.id}>
-                  <img
-                    src={`https://eu.ui-avatars.com/api/?name=${a.firstName}+${a.lastName}&size=80`}
-                    alt={a.firstName + " " + a.lastName}
-                    title={a.firstName + " " + a.lastName}
-                  />
-                </div>
-              ))}
-          </div>
-          <div
-            className='inline-block px-0.5 py-1 border-2'
-            {...provided.dragHandleProps}
-          >
-            <GripIcon className={"w-4 h-4"} />
-          </div>
+          <div>{assignees && <AssigneesList list={assignees} />}</div>
         </div>
       )}
     </Draggable>

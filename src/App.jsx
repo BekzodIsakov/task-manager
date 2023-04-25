@@ -16,7 +16,7 @@ export const ASSIGNEES = new Map([
       id: "assigneeId1",
       firstName: "Robin",
       lastName: "Wieruch",
-      imgUrl: ''
+      imgUrl: "",
     },
   ],
   [
@@ -25,7 +25,7 @@ export const ASSIGNEES = new Map([
       id: "assigneeId2",
       firstName: "Jannet",
       lastName: "Layn",
-      imgUrl: ''
+      imgUrl: "",
     },
   ],
   [
@@ -34,7 +34,34 @@ export const ASSIGNEES = new Map([
       id: "assigneeId3",
       firstName: "Aiden",
       lastName: "Kettel",
-      imgUrl: ''
+      imgUrl: "",
+    },
+  ],
+  [
+    "assigneeId4",
+    {
+      id: "assigneeId4",
+      firstName: "Robin",
+      lastName: "Wieruch",
+      imgUrl: "",
+    },
+  ],
+  [
+    "assigneeId5",
+    {
+      id: "assigneeId5",
+      firstName: "Jannet",
+      lastName: "Layn",
+      imgUrl: "",
+    },
+  ],
+  [
+    "assigneeId6",
+    {
+      id: "assigneeId6",
+      firstName: "Aiden",
+      lastName: "Kettel",
+      imgUrl: "",
     },
   ],
 ]);
