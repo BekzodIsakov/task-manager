@@ -1,6 +1,7 @@
 import React from "react";
-import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import { Droppable } from "react-beautiful-dnd";
 import DraggableItem from "./DraggableItem";
+import { CARDS } from "../App";
 
 // react-beautiful-dnd doesn't work with React 18 and upwards in Strict mode. The below HOC is the temporary fix
 export const StrictModeDroppable = ({ children, ...props }) => {
@@ -18,13 +19,17 @@ export const StrictModeDroppable = ({ children, ...props }) => {
   return <Droppable {...props}>{children}</Droppable>;
 };
 
-export const Column = ({ list, onDragEnd, dragItemClasses, ...otherProps }) => {
+export const Column = ({ column, dragItemClasses, ...otherProps }) => {
+  const cards = column.cardIds.flatMap((cardId) =>
+    CARDS.find((card) => card.id === cardId)
+  );
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
-      <StrictModeDroppable droppableId='droppable'>
+    <div className='border-red-200 border-2'>
+      <h2>{column.title}</h2>
+      <StrictModeDroppable droppableId={column.id}>
         {(provided) => (
           <div ref={provided.innerRef} {...provided.droppableProps}>
-            {list.map((item, index) => (
+            {cards.map((item, index) => (
               <DraggableItem
                 key={item.id}
                 index={index}
@@ -38,6 +43,6 @@ export const Column = ({ list, onDragEnd, dragItemClasses, ...otherProps }) => {
           </div>
         )}
       </StrictModeDroppable>
-    </DragDropContext>
+    </div>
   );
 };
