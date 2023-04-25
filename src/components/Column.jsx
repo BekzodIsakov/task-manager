@@ -1,6 +1,5 @@
 import React from "react";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import clsx from "clsx";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import DraggableItem from "./DraggableItem";
 
 // react-beautiful-dnd doesn't work with React 18 and upwards in Strict mode. The below HOC is the temporary fix
