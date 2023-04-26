@@ -4,7 +4,7 @@ import { ASSIGNEES } from "../App";
 
 const Header = () => {
   return (
-    <div className='p-1 bg-blue-300 flex justify-end'>
+    <div className='p-2 backdrop-blur-lg bg-white/20 flex justify-end'>
       <AssigneesList list={Array.from(ASSIGNEES.values())} />
     </div>
   );

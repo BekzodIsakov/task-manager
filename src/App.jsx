@@ -17,7 +17,7 @@ export const ASSIGNEES = new Map([
       id: "assigneeId1",
       firstName: "Robin",
       lastName: "Wieruch",
-      imgUrl: "",
+      imgUrl: "/image-3.jpg",
     },
   ],
   [
@@ -26,7 +26,7 @@ export const ASSIGNEES = new Map([
       id: "assigneeId2",
       firstName: "Jannet",
       lastName: "Layn",
-      imgUrl: "",
+      imgUrl: "/image-4.jpg",
     },
   ],
   [
@@ -35,7 +35,7 @@ export const ASSIGNEES = new Map([
       id: "assigneeId3",
       firstName: "Aiden",
       lastName: "Kettel",
-      imgUrl: "",
+      imgUrl: "/image-5.jpg",
     },
   ],
   [
@@ -53,7 +53,7 @@ export const ASSIGNEES = new Map([
       id: "assigneeId5",
       firstName: "Jannet",
       lastName: "Layn",
-      imgUrl: "",
+      imgUrl: "/image-2.jpg",
     },
   ],
   [
@@ -62,7 +62,7 @@ export const ASSIGNEES = new Map([
       id: "assigneeId6",
       firstName: "Aiden",
       lastName: "Kettel",
-      imgUrl: "",
+      imgUrl: "/image-1.jpg",
     },
   ],
 ]);
@@ -173,15 +173,15 @@ const App = () => {
   };
 
   return (
-    <div className='min-h-screen bg-cover'>
+    <div className='min-h-screen bg-cover bg-fixed bg-sky'>
       <Header />
-      <div className='flex'>
+      <div className='flex items-start gap-x-4 p-4'>
         <DragDropContext onDragEnd={handleDragEnd}>
           {columns.map((column) => (
             <Column
               key={column.id}
               column={column}
-              dragItemClasses='shadow-xl'
+              dragItemClasses='shadow-xl backdrop-blur-md bg-white/30'
             />
           ))}
         </DragDropContext>

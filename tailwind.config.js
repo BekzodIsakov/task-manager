@@ -6,8 +6,9 @@ export default {
     extend: {
       backgroundImage: {
         gradient: "url('/src/assets/gradient.jpg')",
-        horizon: "url('/src/assets/horizon.jpg')",
+        mountain: "url('/src/assets/mountain.jpg')",
         paint: "url('/src/assets/paint.jpg')",
+        sky: "url('/src/assets/sky.jpg')",
       },
     },
   },

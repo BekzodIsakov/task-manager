@@ -15,9 +15,11 @@ const DraggableItem = ({ item, index, dragItemClasses, children }) => {
         <div
           ref={provided.innerRef}
           {...provided.draggableProps}
-          className={clsx("border-2 p-6", {
-            [dragItemClasses]: snapshot.isDragging,
-          })}
+          className={clsx(
+            "p-4 rounded-md ",
+            snapshot.isDragging && dragItemClasses,
+            !snapshot.isDragging && "bg-slate-100"
+          )}
           style={{
             // default drag style
             ...provided.draggableProps.style,

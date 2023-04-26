@@ -24,11 +24,20 @@ export const Column = ({ column, dragItemClasses, ...otherProps }) => {
     CARDS.find((card) => card.id === cardId)
   );
   return (
-    <div className='border-red-200 border-2'>
-      <h2>{column.title}</h2>
+    <div className='w-96 bg-slate-300 p-2 rounded-md'>
+      <h2 className='font-medium mb-2'>
+        {column.title}{" "}
+        <span className='p-1 px-2 rounded-full font-light text-sm bg-indigo-100 text-indigo-500'>
+          {column.cardIds.length}
+        </span>
+      </h2>
       <StrictModeDroppable droppableId={column.id}>
         {(provided) => (
-          <div ref={provided.innerRef} {...provided.droppableProps}>
+          <div
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+            className='min-h-[50px] flex flex-col gap-2'
+          >
             {cards.map((item, index) => (
               <DraggableItem
                 key={item.id}
