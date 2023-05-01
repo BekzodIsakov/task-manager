@@ -1,7 +1,9 @@
 import * as React from "react";
+import { useSelector } from "react-redux";
+import { DragDropContext } from "react-beautiful-dnd";
+
 import { Column } from "./components/Column";
 import Header from "./components/Header";
-import { DragDropContext } from "react-beautiful-dnd";
 
 export const PRIORITIES = ["low", "middle", "high"];
 export const PRIORITY_COLORS = {
@@ -10,62 +12,54 @@ export const PRIORITY_COLORS = {
   high: "#ef4444",
 };
 
-export const ASSIGNEES = new Map([
-  [
-    "assigneeId1",
-    {
+export const ASSIGNEES = {
+  byId: {
+    assigneeId1: {
       id: "assigneeId1",
       firstName: "Robin",
       lastName: "Wieruch",
       imgUrl: "/image-3.jpg",
     },
-  ],
-  [
-    "assigneeId2",
-    {
+    assigneeId2: {
       id: "assigneeId2",
       firstName: "Jannet",
       lastName: "Layn",
       imgUrl: "/image-4.jpg",
     },
-  ],
-  [
-    "assigneeId3",
-    {
+    assigneeId3: {
       id: "assigneeId3",
       firstName: "Aiden",
       lastName: "Kettel",
       imgUrl: "/image-5.jpg",
     },
-  ],
-  [
-    "assigneeId4",
-    {
+    assigneeId4: {
       id: "assigneeId4",
       firstName: "Robin",
       lastName: "Wieruch",
       imgUrl: "",
     },
-  ],
-  [
-    "assigneeId5",
-    {
+    assigneeId5: {
       id: "assigneeId5",
       firstName: "Jannet",
       lastName: "Layn",
       imgUrl: "/image-2.jpg",
     },
-  ],
-  [
-    "assigneeId6",
-    {
+    assigneeId6: {
       id: "assigneeId6",
       firstName: "Aiden",
       lastName: "Kettel",
       imgUrl: "/image-1.jpg",
     },
+  },
+  allIds: [
+    "assigneeId1",
+    "assigneeId2",
+    "assigneeId3",
+    "assigneeId4",
+    "assigneeId5",
+    "assigneeId6",
   ],
-]);
+};
 
 const COLUMNS = [
   {
@@ -82,72 +76,6 @@ const COLUMNS = [
     id: "column3",
     title: "Done",
     cardIds: ["7", "8", "9"],
-  },
-];
-
-export const CARDS = [
-  {
-    id: "1",
-    task: "Deploy the app",
-    description: "This is the task description for task id 1",
-    assigneesIds: ["assigneeId1"],
-    priorityIdx: 0,
-  },
-  {
-    id: "2",
-    task: "Change the styles",
-    description: "This is the task description for task id 2",
-    assigneesIds: ["assigneeId2", "assigneeId3"],
-    priorityIdx: 2,
-  },
-  {
-    id: "3",
-    task: "Learn databases",
-    description: "This is the task description for task id 3",
-    assigneesIds: ["assigneeId3"],
-    priorityIdx: 1,
-  },
-  {
-    id: "4",
-    task: "Find the round-up 6",
-    description: "This is the task description for task id 4",
-    assigneesIds: ["assigneeId4"],
-    priorityIdx: 2,
-  },
-  {
-    id: "5",
-    task: "Pack the clothes",
-    description: "This is the task description for task id 5",
-    assigneesIds: ["assigneeId5"],
-    priorityIdx: 0,
-  },
-  {
-    id: "6",
-    task: "Finish the weather app",
-    description: "This is the task description for task id 6",
-    assigneesIds: ["assigneeId6", "assigneeId1"],
-    priorityIdx: 0,
-  },
-  {
-    id: "7",
-    task: "Clean the room",
-    description: "This is the task description for task id 7",
-    assigneesIds: ["assigneeId1", "assigneeId4"],
-    priorityIdx: 0,
-  },
-  {
-    id: "8",
-    task: "Work out",
-    description: "This is the task description for task id 8",
-    assigneesIds: ["assigneeId3"],
-    priorityIdx: 1,
-  },
-  {
-    id: "9",
-    task: "Drag-n-drop between columns",
-    description: "This is the task description for task id 9",
-    assigneesIds: ["assigneeId6", "assigneeId5"],
-    priorityIdx: 2,
   },
 ];
 

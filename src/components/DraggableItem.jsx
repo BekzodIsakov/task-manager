@@ -7,7 +7,7 @@ import GripIcon from "./icons/GripIcon";
 import AssigneesList from "./AssigneesList";
 
 const DraggableItem = ({ item, index, dragItemClasses, children }) => {
-  const assignees = item?.assigneesIds.map((id) => ASSIGNEES.get(id));
+  const assignees = item?.assigneesIds.map((id) => ASSIGNEES.byId[id]);
 
   return (
     <Draggable key={item.id} index={index} draggableId={item.id}>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Droppable } from "react-beautiful-dnd";
 import DraggableItem from "./DraggableItem";
-import { CARDS } from "../App";
+import { useSelector } from "react-redux";
 
 // react-beautiful-dnd doesn't work with React 18 and upwards in Strict mode. The below HOC is the temporary fix
 export const StrictModeDroppable = ({ children, ...props }) => {
@@ -20,9 +20,7 @@ export const StrictModeDroppable = ({ children, ...props }) => {
 };
 
 export const Column = ({ column, dragItemClasses, ...otherProps }) => {
-  const cards = column.cardIds.flatMap((cardId) =>
-    CARDS.find((card) => card.id === cardId)
-  );
+  const cards = useSelector((state) => state.cards);
   return (
     <div className='w-96 bg-slate-300 p-2 rounded-md'>
       <h2 className='font-medium mb-2'>
@@ -38,13 +36,13 @@ export const Column = ({ column, dragItemClasses, ...otherProps }) => {
             {...provided.droppableProps}
             className='min-h-[50px] flex flex-col gap-2'
           >
-            {cards.map((item, index) => (
+            {column.cardIds.map((id, index) => (
               <DraggableItem
-                key={item.id}
+                key={id}
                 index={index}
-                draggableId={item.id}
+                draggableId={id}
                 dragItemClasses={dragItemClasses}
-                item={item}
+                item={cards.byId[id]}
                 {...otherProps}
               />
             ))}
