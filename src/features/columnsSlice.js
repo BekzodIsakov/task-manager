@@ -22,14 +22,20 @@ export const columnsSlice = createSlice({
   name: "columns",
   initialState,
   reducers: {
-    remove: (state, action) => {
-      state = state.filter((column) => column.id != action.payload.id);
-    },
     reorder: (state, action) => {
       const { source, destination } = action.payload;
+      const sourceColumn = state.find((c) => c.id === source.droppableId);
+      const destinationColumn = state.find(
+        (c) => c.id === destination.droppableId
+      );
+      const [removed] = sourceColumn.cardIds.splice(source.index, 1);
+      destinationColumn.cardIds.splice(destination.index, 0, removed);
+    },
+    remove: (state, action) => {
+      state = state.filter((column) => column.id != action.payload.id);
     },
   },
 });
 
-export const { remove } = columnsSlice.actions;
+export const { reorder, remove } = columnsSlice.actions;
 export default columnsSlice.reducer;

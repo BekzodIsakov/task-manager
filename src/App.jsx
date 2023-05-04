@@ -1,9 +1,10 @@
 import * as React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { DragDropContext } from "react-beautiful-dnd";
 
 import { Column } from "./components/Column";
 import Header from "./components/Header";
+import { reorder } from "./features/columnsSlice";
 
 export const PRIORITIES = ["low", "middle", "high"];
 export const PRIORITY_COLORS = {
@@ -80,30 +81,18 @@ const COLUMNS = [
 ];
 
 const App = () => {
-  const [columns, setColumns] = React.useState(COLUMNS);
-
-  const reorder = (list, source, destination) => {
-    const result = Array.from(list);
-    const sourceColumn = result.find((c) => c.id === source.droppableId);
-    const destinationColumn = result.find(
-      (c) => c.id === destination.droppableId
-    );
-    const [removed] = sourceColumn.cardIds.splice(source.index, 1);
-    destinationColumn.cardIds.splice(destination.index, 0, removed);
-
-    return result;
-  };
+  const columns = useSelector((state) => state.columns);
+  const dispatch = useDispatch();
 
   const handleDragEnd = ({ destination, source }) => {
     if (!destination) return;
-
-    setColumns(reorder(columns, source, destination));
+    dispatch(reorder({ destination, source }));
   };
 
   return (
     <div className='min-h-screen bg-cover bg-fixed bg-sky'>
       <Header />
-      <div className='flex items-start gap-x-4 p-4'>
+      <div className='flex flex-col sm:flex-row sm:items-start gap-4 p-4'>
         <DragDropContext onDragEnd={handleDragEnd}>
           {columns.map((column) => (
             <Column
