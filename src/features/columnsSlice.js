@@ -34,8 +34,14 @@ export const columnsSlice = createSlice({
     remove: (state, action) => {
       state = state.filter((column) => column.id != action.payload.id);
     },
+    addCardId: (state, action) => {
+      const { cardId, columnId } = action.payload;
+      console.log({ cardId, columnId });
+      const column = state.find((c) => c.id == columnId);
+      column?.cardIds.push(cardId);
+    },
   },
 });
 
-export const { reorder, remove } = columnsSlice.actions;
+export const { reorder, remove, addCardId } = columnsSlice.actions;
 export default columnsSlice.reducer;

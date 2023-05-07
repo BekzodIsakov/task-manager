@@ -2,11 +2,11 @@ import React from "react";
 import { Draggable } from "react-beautiful-dnd";
 import clsx from "clsx";
 
-import { ASSIGNEES, PRIORITIES, PRIORITY_COLORS } from "../App";
+import {PRIORITIES, PRIORITY_COLORS, ASSIGNEES} from '../constants';
 import GripIcon from "./icons/GripIcon";
 import AssigneesList from "./AssigneesList";
 
-const DraggableItem = ({ item, index, dragItemClasses, children }) => {
+const DraggableItem = ({ item, index, dragItemClasses }) => {
   const assignees = item?.assigneesIds.map((id) => ASSIGNEES.byId[id]);
 
   return (

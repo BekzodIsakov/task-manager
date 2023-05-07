@@ -73,15 +73,31 @@ export const cardsSlice = createSlice({
   name: "cards",
   initialState,
   reducers: {
-    create: (state) => {
-      const newCardId = 10;
-      state.allIds.push(newCardId);
-      state.byId[newCardId] = {
-        id: newCardId,
-        task: "Finish RTK tutorial|Redux Toolkit App Structure",
-        description: "This is the task description for task id " + newCardId,
-        assigneesIds: ["assigneeId3"],
-        priorityIdx: 2,
+    create: (state, action) => {
+      const {
+        cardId,
+        columnId,
+        title,
+        description,
+        priorityIdx,
+        assigneesIds,
+      } = action.payload;
+      console.log({
+        cardId,
+        columnId,
+        title,
+        description,
+        priorityIdx,
+        assigneesIds,
+      });
+
+      state.allIds.push(cardId);
+      state.byId[cardId] = {
+        id: cardId,
+        task: title,
+        description,
+        priorityIdx,
+        assigneesIds,
       };
     },
   },

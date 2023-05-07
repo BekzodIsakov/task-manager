@@ -38,7 +38,7 @@ export const Column = ({ column, dragItemClasses, ...otherProps }) => {
           <div
             ref={provided.innerRef}
             {...provided.droppableProps}
-            className='min-h-[50px] flex flex-col gap-2'
+            className='min-h-[20px] flex flex-col gap-2'
           >
             {column.cardIds.map((id, index) => (
               <DraggableItem
@@ -63,7 +63,9 @@ export const Column = ({ column, dragItemClasses, ...otherProps }) => {
           Add {column.cardIds.length ? "another" : "new"} card
         </span>
       </button>
-      {showDialog && <Dialog handleClose={() => setShowDialog(false)} />}
+      {showDialog && (
+        <Dialog handleClose={() => setShowDialog(false)} columnId={column.id} />
+      )}
     </div>
   );
 };
